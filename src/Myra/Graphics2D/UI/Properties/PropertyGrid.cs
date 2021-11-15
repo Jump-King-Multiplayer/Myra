@@ -330,11 +330,7 @@ namespace Myra.Graphics2D.UI.Properties
 		{
 		}
 
-		public PropertyGrid(string category) : this(Stylesheet.Current.TreeStyle, category)
-		{
-		}
-
-		public PropertyGrid() : this(DefaultCategoryName)
+		public PropertyGrid() : this(Stylesheet.Current.TreeStyle, DefaultCategoryName)
 		{
 		}
 
