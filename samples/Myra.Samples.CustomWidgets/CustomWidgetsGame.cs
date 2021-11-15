@@ -1,6 +1,12 @@
-﻿using Myra.Graphics2D.UI;
+﻿using System;
+using System.IO;
+using System.Reflection;
+using Myra.Graphics2D.UI;
 using Microsoft.Xna.Framework;
+using Myra.Assets;
 using Myra.Graphics2D.UI.Properties;
+using Myra.Graphics2D.UI.Styles;
+using Myra.Graphics2D.UI.TypeResolvers;
 
 namespace Myra.Samples.AllWidgets
 {
@@ -8,7 +14,6 @@ namespace Myra.Samples.AllWidgets
 	{
 		private readonly GraphicsDeviceManager _graphics;
 
-		private PropertyGrid _propertyGrid;
 		private Desktop _desktop;
 
 		public CustomWidgetsGame()
@@ -29,28 +34,16 @@ namespace Myra.Samples.AllWidgets
 
 			MyraEnvironment.Game = this;
 
-			var arrow = new Arrow
-			{
-				Width = 200,
-				Height = 50,
-				HorizontalAlignment = HorizontalAlignment.Center,
-				VerticalAlignment = VerticalAlignment.Center
-			};
+			var topPanel = (HorizontalSplitPane)Project.LoadObjectFromXml<object>(
+				GetRootPanelResourceString(),
+				new AssetManager(new ResourceAssetResolver(Assembly.GetExecutingAssembly(), "Resources")),
+				Stylesheet.Current,
+				handler: null,
+				new ManualTypeResolver(typeof(Arrow))
+			);
 
-			var scrollViewer = new ScrollViewer();
-
-			_propertyGrid = new PropertyGrid
-			{
-				Object = arrow
-			};
-
-			scrollViewer.Content = _propertyGrid;
-
-			var topPanel = new HorizontalSplitPane();
-
-
-			topPanel.Widgets.Add(arrow);
-			topPanel.Widgets.Add(scrollViewer);
+			var arrowPropertyGrid = (PropertyGrid)topPanel.EnsureWidgetById("ArrowPropertyGrid");
+			arrowPropertyGrid.Object = topPanel.EnsureWidgetById("Arrow");
 
 			topPanel.SetSplitterPosition(0, 0.75f);
 
@@ -90,6 +83,13 @@ namespace Myra.Samples.AllWidgets
 					null);
 			};
 #endif
+		}
+
+		private string GetRootPanelResourceString()
+		{
+			using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Myra.Samples.CustomWidgets.Resources.Root.xmmp");
+			using var textReader = new StreamReader(stream ?? throw new InvalidOperationException("Could not find Root.xmmp resource"));
+			return textReader.ReadToEnd();
 		}
 
 		protected override void Draw(GameTime gameTime)

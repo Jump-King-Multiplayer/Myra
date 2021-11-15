@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <ApplicationIcon />
     <StartupObject />
     <AssemblyName>Myra.Samples.CustomWidgets</AssemblyName>
@@ -15,5 +15,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Myra\Myra.MonoGame.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Root.xmmp" />
   </ItemGroup>  
 </Project>

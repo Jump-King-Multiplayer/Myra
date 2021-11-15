@@ -31,6 +31,7 @@ namespace Myra.MML
 		public string[] Namespaces;
 		public Assembly Assembly = typeof(Widget).Assembly;
 		public Func<Type, string, object> ResourceGetter = null;
+		public ITypeResolver TypeResolver;
 
 		private const string UserDataAttributePrefix = "_";
 
@@ -254,6 +255,9 @@ namespace Myra.MML
 							break;
 						}
 					}
+
+					itemType ??= TypeResolver?.ResolveType(widgetName);
+					
 					if (itemType != null)
 					{
 						var item = ObjectCreator(itemType, child);

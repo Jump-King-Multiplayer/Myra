@@ -1,6 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.Reflection;
+using Microsoft.Xna.Framework;
 using Myra.Assets;
 using Myra.Graphics2D.UI;
+using Myra.Graphics2D.UI.Styles;
+using Myra.Graphics2D.UI.TypeResolvers;
 using NUnit.Framework;
 
 namespace Myra.Tests
@@ -27,6 +31,61 @@ namespace Myra.Tests
 			var label = (Label)project.Root.FindWidgetById("label");
 			Assert.IsNotNull(label);
 			Assert.IsNotNull(label.Font);
+		}
+
+		[Test]
+		public void LoadMMLWithCustomWidgetUsingAssemblyTypeResolver()
+		{
+			string mml = "<CustomWidget CustomText=\"Hello\" />";
+			var customWidget = (CustomWidget)Project.LoadObjectFromXml<object>(
+				mml,
+				assetManager: null,
+				Stylesheet.Current,
+				handler: null,
+				new AssemblyTypeResolver(new[] { new Tuple<Assembly, string>(Assembly.GetExecutingAssembly(), "Myra.Tests") }));
+
+			Assert.AreEqual(customWidget.CustomText, "Hello");
+		}
+
+		[Test]
+		public void LoadMMLWithCustomWidgetUsingTypeResolver()
+		{
+			string mml = "<CustomWidget CustomText=\"Hello\" />";
+			var customWidget = (CustomWidget)Project.LoadObjectFromXml<object>(
+				mml,
+				assetManager: null,
+				Stylesheet.Current,
+				handler: null,
+				new ManualTypeResolver(typeof(CustomWidget))
+			);
+
+			Assert.AreEqual(customWidget.CustomText, "Hello");
+		}
+
+		[Test]
+		public void LoadMMLWithWrappedCustomWidget()
+		{
+			string mml = "<Panel><CustomWidget Id=\"MyCustomWidget\" CustomText=\"Hello\" /></Panel>";
+			var panel = (Panel)Project.LoadObjectFromXml<object>(
+				mml,
+				assetManager: null,
+				Stylesheet.Current,
+				handler: null,
+				new ManualTypeResolver(typeof(CustomWidget))
+			);
+
+			var customWidget = (CustomWidget)panel.EnsureWidgetById("MyCustomWidget");
+
+			Assert.AreEqual(customWidget.CustomText, "Hello");
+		}
+	}
+
+	public class CustomWidget : Label
+	{
+		public string CustomText
+		{
+			get => Text;
+			set => Text = value;
 		}
 	}
 }

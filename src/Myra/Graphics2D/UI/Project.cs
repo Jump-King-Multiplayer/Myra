@@ -27,6 +27,11 @@ namespace Myra.Graphics2D.UI
 		public string TemplateMain { get; set; }
 	}
 
+	public interface ITypeResolver
+	{
+		public Type ResolveType(string tagName);
+	}
+
 	public class Project
 	{
 		public const string ProportionName = "Proportion";
@@ -148,7 +153,7 @@ namespace Myra.Graphics2D.UI
 			return CreateSaveContext(Stylesheet);
 		}
 
-		internal static LoadContext CreateLoadContext(IAssetManager assetManager, Stylesheet stylesheet)
+		internal static LoadContext CreateLoadContext(IAssetManager assetManager, Stylesheet stylesheet, ITypeResolver typeResolver)
 		{
 			Func<Type, string, object> resourceGetter = (t, name) =>
 			{
@@ -177,13 +182,14 @@ namespace Myra.Graphics2D.UI
 				},
 				LegacyClassNames = LegacyClassNames,
 				ObjectCreator = (t, el) => CreateItem(t, el, stylesheet),
-				ResourceGetter = resourceGetter
+				ResourceGetter = resourceGetter,
+				TypeResolver = typeResolver
 			};
 		}
 
-		internal LoadContext CreateLoadContext(IAssetManager assetManager)
+		internal LoadContext CreateLoadContext(IAssetManager assetManager, ITypeResolver typeResolver)
 		{
-			return CreateLoadContext(assetManager, Stylesheet);
+			return CreateLoadContext(assetManager, Stylesheet, typeResolver);
 		}
 
 		public string Save()
@@ -196,40 +202,40 @@ namespace Myra.Graphics2D.UI
 			return xDoc.ToString();
 		}
 
-		public static Project LoadFromXml<T>(XDocument xDoc, IAssetManager assetManager, Stylesheet stylesheet, T handler) where T : class 
+		public static Project LoadFromXml<T>(XDocument xDoc, IAssetManager assetManager, Stylesheet stylesheet, T handler, ITypeResolver typeResolver = null) where T : class 
 		{
 			var result = new Project
 			{
 				Stylesheet = stylesheet
 			};
 
-			var loadContext = result.CreateLoadContext(assetManager);
+			var loadContext = result.CreateLoadContext(assetManager, typeResolver);
 			loadContext.Load(result, xDoc.Root, handler);
 
 			return result;
 		}
 
-		public static Project LoadFromXml<T>(string data, IAssetManager assetManager, Stylesheet stylesheet, T handler) where T : class
+		public static Project LoadFromXml<T>(string data, IAssetManager assetManager, Stylesheet stylesheet, T handler, ITypeResolver typeResolver = null) where T : class
 		{
-			return LoadFromXml(XDocument.Parse(data), assetManager, stylesheet, handler);
+			return LoadFromXml(XDocument.Parse(data), assetManager, stylesheet, handler, typeResolver);
 		}
 
-		public static Project LoadFromXml(XDocument xDoc, IAssetManager assetManager, Stylesheet stylesheet)
+		public static Project LoadFromXml(XDocument xDoc, IAssetManager assetManager, Stylesheet stylesheet, ITypeResolver typeResolver = null)
 		{
-			return LoadFromXml<object>(xDoc, assetManager, stylesheet, null);
+			return LoadFromXml<object>(xDoc, assetManager, stylesheet, null, typeResolver);
 		}
 
-		public static Project LoadFromXml(string data, IAssetManager assetManager, Stylesheet stylesheet)
+		public static Project LoadFromXml(string data, IAssetManager assetManager, Stylesheet stylesheet, ITypeResolver typeResolver = null)
 		{
-			return LoadFromXml<object>(XDocument.Parse(data), assetManager, stylesheet, null);
+			return LoadFromXml<object>(XDocument.Parse(data), assetManager, stylesheet, null, typeResolver);
 		}
 
-		public static Project LoadFromXml(string data, IAssetManager assetManager = null)
+		public static Project LoadFromXml(string data, IAssetManager assetManager = null, ITypeResolver typeResolver = null)
 		{
-			return LoadFromXml<object>(data, assetManager, Stylesheet.Current, null);
+			return LoadFromXml<object>(data, assetManager, Stylesheet.Current, null, typeResolver);
 		}
 
-		public static object LoadObjectFromXml<T>(string data, IAssetManager assetManager, Stylesheet stylesheet, T handler) where T : class
+		public static object LoadObjectFromXml<T>(string data, IAssetManager assetManager, Stylesheet stylesheet, T handler, ITypeResolver typeResolver = null) where T : class
 		{
 			XDocument xDoc = XDocument.Parse(data);
 
@@ -257,24 +263,27 @@ namespace Myra.Graphics2D.UI
 
 			if (itemType == null)
 			{
-				return null;
+				itemType = typeResolver?.ResolveType(name);
+
+				if (itemType == null)
+					return null;
 			}
 
 			var item = CreateItem(itemType, xDoc.Root, stylesheet);
-			var loadContext = CreateLoadContext(assetManager, stylesheet);
+			var loadContext = CreateLoadContext(assetManager, stylesheet, typeResolver);
 			loadContext.Load(item, xDoc.Root, handler);
 
 			return item;
 		}
 
-		public static object LoadObjectFromXml(string data, IAssetManager assetManager, Stylesheet stylesheet)
-        {
-			return LoadObjectFromXml<object>(data, assetManager, stylesheet, null);
-        }
-
-		public object LoadObjectFromXml(string data, IAssetManager assetManager)
+		public static object LoadObjectFromXml(string data, IAssetManager assetManager, Stylesheet stylesheet, ITypeResolver typeResolver = null)
 		{
-			return LoadObjectFromXml(data, assetManager, Stylesheet);
+			return LoadObjectFromXml<object>(data, assetManager, stylesheet, null, typeResolver);
+		}
+
+		public object LoadObjectFromXml(string data, IAssetManager assetManager, ITypeResolver typeResolver = null)
+		{
+			return LoadObjectFromXml(data, assetManager, Stylesheet, typeResolver);
 		}
 
 		public string SaveObjectToXml(object obj, string tagName)

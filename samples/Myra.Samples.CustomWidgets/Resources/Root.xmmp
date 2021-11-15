@@ -1,0 +1,12 @@
+<HorizontalSplitPane>
+    <Arrow
+            Id="Arrow"
+            Width="200"
+            Height="50"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+    />
+    <ScrollViewer>
+        <PropertyGrid Id="ArrowPropertyGrid" />
+    </ScrollViewer>
+</HorizontalSplitPane>
