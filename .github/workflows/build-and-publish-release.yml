@@ -20,8 +20,6 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '5.0.x'
-    - name: Test
-      run: dotnet test build\Myra.MonoGame.sln --verbosity normal
     - name: Restore Myra.MonoGame
       run: dotnet restore build\Myra.MonoGame.sln
     - name: Restore Myra.Stride
@@ -40,6 +38,8 @@ jobs:
       run: dotnet pack build\Myra.Stride.sln --configuration Release --no-build
     - name: Pack Myra.PlatformAgnostic
       run: dotnet pack build\Myra.PlatformAgnostic.sln --configuration Release --no-build
+    - name: Test
+      run: dotnet test build\Myra.MonoGame.sln --verbosity normal
     - name: Build Binary Distribution
       shell: pwsh
       run: ./buildBinaryDistribution.ps1 ${{env.VERSION}}
