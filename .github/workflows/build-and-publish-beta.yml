@@ -47,13 +47,9 @@ jobs:
         name: Myra.${{env.VERSION}}.zip
         path: Myra.${{env.VERSION}}.zip
         retention-days: 30
-    - name: Install NuGet
-      uses: NuGet/setup-nuget@v1
-    - name: Set nuget api key
-      run: nuget.exe setapikey ${{secrets.GITHUB_TOKEN}} -Source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
     - name: Publish Myra.MonoGame to github
-      run: nuget.exe push src\Myra\bin\MonoGame\Release\Myra.*.nupkg -Source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+      run: dotnet nuget push src\Myra\bin\MonoGame\Release\Myra.*.nupkg --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --api-key ${{secrets.GITHUB_TOKEN}} --skip-duplicate
     - name: Publish Myra.Stride to github
-      run: nuget.exe push src\Myra\bin\Stride\Release\Myra.Stride.*.nupkg -Source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+      run: dotnet nuget push src\Myra\bin\Stride\Release\Myra.Stride.*.nupkg --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --api-key ${{secrets.GITHUB_TOKEN}} --skip-duplicate
     - name: Publish Myra.PlatformAgnostic to github
-      run: nuget.exe push src\Myra\bin\PlatformAgnostic\Release\Myra.PlatformAgnostic.*.nupkg -Source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+      run: dotnet nuget push src\Myra\bin\PlatformAgnostic\Release\Myra.PlatformAgnostic.*.nupkg --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --api-key ${{secrets.GITHUB_TOKEN}} --skip-duplicate
