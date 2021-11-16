@@ -33,11 +33,17 @@ jobs:
     - name: Test
       run: dotnet test build\Myra.MonoGame.sln --verbosity normal
     - name: Build Myra.MonoGame
-      run: dotnet pack build\Myra.MonoGame.sln --configuration Release --version-suffix ${{env.VERSION_SUFFIX}}
+      run: dotnet build build\Myra.MonoGame.sln --configuration Release
     - name: Build Myra.Stride
-      run: dotnet pack build\Myra.Stride.sln --configuration Release --version-suffix ${{env.VERSION_SUFFIX}}
+      run: dotnet build build\Myra.Stride.sln --configuration Release
     - name: Build Myra.PlatformAgnostic
-      run: dotnet pack build\Myra.PlatformAgnostic.sln --configuration Release --version-suffix ${{env.VERSION_SUFFIX}}
+      run: dotnet build build\Myra.PlatformAgnostic.sln --configuration Release
+    - name: Pack Myra.MonoGame
+      run: dotnet pack build\Myra.MonoGame.sln --configuration Release --version-suffix ${{env.VERSION_SUFFIX}} --no-build
+    - name: Pack Myra.Stride
+      run: dotnet pack build\Myra.Stride.sln --configuration Release --version-suffix ${{env.VERSION_SUFFIX}} --no-build
+    - name: Pack Myra.PlatformAgnostic
+      run: dotnet pack build\Myra.PlatformAgnostic.sln --configuration Release --version-suffix ${{env.VERSION_SUFFIX}} --no-build
     - name: Build Binary Distribution
       shell: pwsh
       run: ./buildBinaryDistribution.ps1 ${{env.VERSION}}
