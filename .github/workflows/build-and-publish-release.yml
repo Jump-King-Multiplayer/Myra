@@ -23,17 +23,17 @@ jobs:
     - name: Test
       run: dotnet test build\Myra.MonoGame.sln --verbosity normal
     - name: Restore Myra.MonoGame
-      run: Restore restore build\Myra.MonoGame.sln
+      run: Restore build\Myra.MonoGame.sln
     - name: Restore Myra.Stride
       run: dotnet restore build\Myra.Stride.sln
     - name: Build Myra.PlatformAgnostic
       run: dotnet restore build\Myra.PlatformAgnostic.sln
     - name: Build Myra.MonoGame
-      run: dotnet build build\Myra.MonoGame.sln --configuration Release
+      run: dotnet build build\Myra.MonoGame.sln --configuration Release --no-restore
     - name: Build Myra.Stride
-      run: dotnet build build\Myra.Stride.sln --configuration Release
+      run: dotnet build build\Myra.Stride.sln --configuration Release --no-restore
     - name: Build Myra.PlatformAgnostic
-      run: dotnet build build\Myra.PlatformAgnostic.sln --configuration Release
+      run: dotnet build build\Myra.PlatformAgnostic.sln --configuration Release --no-restore
     - name: Pack Myra.MonoGame
       run: dotnet pack build\Myra.MonoGame.sln --configuration Release --no-build
     - name: Pack Myra.Stride
