@@ -32,6 +32,12 @@ jobs:
         dotnet-version: '5.0.x'
     - name: Test
       run: dotnet test build\Myra.MonoGame.sln --verbosity normal
+    - name: Restore Myra.MonoGame
+      run: Restore restore build\Myra.MonoGame.sln
+    - name: Restore Myra.Stride
+      run: dotnet restore build\Myra.Stride.sln
+    - name: Build Myra.PlatformAgnostic
+      run: dotnet restore build\Myra.PlatformAgnostic.sln
     - name: Build Myra.MonoGame
       run: dotnet build build\Myra.MonoGame.sln --configuration Release
     - name: Build Myra.Stride
