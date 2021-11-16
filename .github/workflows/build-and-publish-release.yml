@@ -23,7 +23,7 @@ jobs:
     - name: Test
       run: dotnet test build\Myra.MonoGame.sln --verbosity normal
     - name: Restore Myra.MonoGame
-      run: Restore build\Myra.MonoGame.sln
+      run: dotnet restore build\Myra.MonoGame.sln
     - name: Restore Myra.Stride
       run: dotnet restore build\Myra.Stride.sln
     - name: Build Myra.PlatformAgnostic
