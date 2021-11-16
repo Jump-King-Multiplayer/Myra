@@ -3,7 +3,7 @@
     <DefineConstants>$(DefineConstants);FNA</DefineConstants>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Myra</AssemblyName>
-    <PackageId>Myra.FNA.Core</PackageId>
+    <PackageId>JKMP.Myra.FNA.Core</PackageId>
     <OutputPath>bin\FNA.Core\$(Configuration)</OutputPath>
   </PropertyGroup>
 
@@ -13,10 +13,10 @@
 
   <ItemGroup>
     <Compile Remove="Platform\**\*.*" />
-  </ItemGroup>  
+  </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="info.lundin.math.dll" Version="$(InfoLundinMathVersion)" />  
+    <PackageReference Include="info.lundin.math.dll" Version="$(InfoLundinMathVersion)" />
   </ItemGroup>
 
   <ItemGroup>

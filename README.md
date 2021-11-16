@@ -1,9 +1,8 @@
 ## Overview
-[![Nuget](https://img.shields.io/nuget/dt/Myra)](https://www.nuget.org/packages/Myra/)
-[![Build & Publish Beta](https://github.com/rds1983/Myra/actions/workflows/build-and-publish-beta.yml/badge.svg)](https://github.com/rds1983/Myra/actions/workflows/build-and-publish-beta.yml)
-[![Chat](https://img.shields.io/discord/628186029488340992.svg)](https://discord.gg/ZeHxhCY)
+[![Build & Publish Release](https://github.com/Jump-King-Multiplayer/Myra/actions/workflows/build-and-publish-release.yml/badge.svg?branch=master)](https://github.com/Jump-King-Multiplayer/Myra/actions/workflows/build-and-publish-release.yml)
+[![Build & Publish Beta](https://github.com/Jump-King-Multiplayer/Myra/actions/workflows/build-and-publish-beta.yml/badge.svg)](https://github.com/Jump-King-Multiplayer/Myra/actions/workflows/build-and-publish-beta.yml)
 
-Myra is UI Library for [MonoGame](http://www.monogame.net/), [FNA](https://github.com/FNA-XNA/FNA) and [Stride](https://github.com/stride3d/stride).  
+Myra is UI Library for [MonoGame](http://www.monogame.net/), [FNA](https://github.com/FNA-XNA/FNA) and [Stride](https://github.com/stride3d/stride).
 
 ## Features
 * **Rich Set of Widgets.** Myra has following widgets: Button, CheckBox, ComboBox, ListBox, TabControl, Grid, Image, Menu, ProgressBar, ScrollPane, SplitPane(with arbitrary number of splitters), Slider, TextBlock, TextField, SpinButton, Tree, Window, Dialog, FileDialog, ColorPickerDialog and PropertyGrid.
@@ -12,11 +11,15 @@ Myra is UI Library for [MonoGame](http://www.monogame.net/), [FNA](https://githu
 * **MyraPad.** Standalone WYSIWYG MML based UI designer.
 * **Myra.PlatformAgnostic.** Version of the library that could be used in any C# game engine.
 
+## Jump King Multiplayer Clone differences
+* Added the ability to use custom widgets when using MML. MyraPad has not been updated to support this however.
+* Fixed various bugs related to MML.
+
 ## Demo
-If you would like to see Myra in action, download the binary release(Myra.v.v.v.v.zip from the latest release at [Releases](https://github.com/rds1983/Myra/releases)), unpack it and run samples(should be runnable on Linux too through Mono).
+If you would like to see Myra in action, download the binary release(Myra.v.v.v.v.zip from the latest release at [Releases](https://github.com/Jump-King-Multiplayer/Myra/releases)), unpack it and run samples(should be runnable on Linux too through Mono).
 
 ## Documentation
-[https://github.com/rds1983/Myra/wiki](https://github.com/rds1983/Myra/wiki)
+[https://github.com/Jump-King-Multiplayer/Myra/wiki](https://github.com/Jump-King-Multiplayer/Myra/wiki)
 
 ## Support
 Use following resources if you need help with Myra or have other questions:

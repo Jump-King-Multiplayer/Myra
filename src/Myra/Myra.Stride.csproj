@@ -3,24 +3,24 @@
     <DefineConstants>$(DefineConstants);STRIDE</DefineConstants>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Myra</AssemblyName>
-    <PackageId>Myra.Stride</PackageId>
+    <PackageId>JKMP.Myra.Stride</PackageId>
     <OutputPath>bin\Stride\$(Configuration)</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <EmbeddedResource Include="Resources\**\*.*" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Platform\**\*.*" />
-  </ItemGroup>  
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FontStashSharp.Stride" Version="$(FontStashSharpVersion)" />
     <PackageReference Include="info.lundin.math.dll" Version="$(InfoLundinMathVersion)" />
-  </ItemGroup>  
+  </ItemGroup>
 </Project>

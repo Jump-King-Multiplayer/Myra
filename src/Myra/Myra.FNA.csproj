@@ -3,7 +3,7 @@
     <DefineConstants>$(DefineConstants);FNA</DefineConstants>
     <TargetFramework>net45</TargetFramework>
     <AssemblyName>Myra</AssemblyName>
-    <PackageId>Myra.FNA</PackageId>
+    <PackageId>JKMP.Myra.FNA</PackageId>
     <OutputPath>bin\FNA\$(Configuration)</OutputPath>
   </PropertyGroup>
 
@@ -13,12 +13,12 @@
 
   <ItemGroup>
     <Compile Remove="Platform\**\*.*" />
-  </ItemGroup>  
+  </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="info.lundin.math.dll" Version="$(InfoLundinMathVersion)" />  
+    <PackageReference Include="info.lundin.math.dll" Version="$(InfoLundinMathVersion)" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <ProjectReference Include="..\..\..\FontStashSharp\src\XNA\FontStashSharp.FNA.csproj" />
   </ItemGroup>

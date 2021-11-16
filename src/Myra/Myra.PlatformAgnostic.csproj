@@ -3,7 +3,7 @@
     <DefineConstants>$(DefineConstants);PLATFORM_AGNOSTIC</DefineConstants>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Myra</AssemblyName>
-    <PackageId>Myra.PlatformAgnostic</PackageId>
+    <PackageId>JKMP.Myra.PlatformAgnostic</PackageId>
     <OutputPath>bin\PlatformAgnostic\$(Configuration)</OutputPath>
   </PropertyGroup>
 
@@ -13,10 +13,10 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\**\*.*" />
-  </ItemGroup>  
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FontStashSharp" Version="$(FontStashSharpVersion)" />
     <PackageReference Include="info.lundin.math.dll" Version="$(InfoLundinMathVersion)" />
-  </ItemGroup>  
+  </ItemGroup>
 </Project>

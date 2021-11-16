@@ -3,7 +3,7 @@
     <DefineConstants>$(DefineConstants);MONOGAME</DefineConstants>
     <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
     <AssemblyName>Myra</AssemblyName>
-    <PackageId>Myra</PackageId>
+    <PackageId>JKMP.Myra</PackageId>
     <OutputPath>bin\MonoGame\$(Configuration)</OutputPath>
   </PropertyGroup>
 
@@ -23,5 +23,5 @@
     <PackageReference Include="FontStashSharp.MonoGame" Version="$(FontStashSharpVersion)" />
     <PackageReference Include="info.lundin.math.dll" Version="$(InfoLundinMathVersion)" />
     <PackageReference Include="MonoGame.Framework.Portable" PrivateAssets="All" Version="3.6.0.1625" />
-  </ItemGroup>  
+  </ItemGroup>
 </Project>
