@@ -20,23 +20,23 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '5.0.x'
-    - name: Pack Myra.MonoGame
-      run: dotnet pack build\Myra.MonoGame.sln --configuration Release
-    - name: Pack Myra.Stride
-      run: dotnet pack build\Myra.Stride.sln --configuration Release
-    - name: Pack Myra.PlatformAgnostic
-      run: dotnet pack build\Myra.PlatformAgnostic.sln --configuration Release
     - name: Test
       run: dotnet test build\Myra.MonoGame.sln --verbosity normal
+    - name: Build & Pack Myra.MonoGame
+      run: dotnet pack build\Myra.MonoGame.sln --configuration Release
+    - name: Build & Pack Myra.Stride
+      run: dotnet pack build\Myra.Stride.sln --configuration Release
+    - name: Build & Pack Myra.PlatformAgnostic
+      run: dotnet pack build\Myra.PlatformAgnostic.sln --configuration Release
     - name: Build Binary Distribution
       shell: pwsh
       run: ./buildBinaryDistribution.ps1 ${{env.VERSION}}
     - name: Publish Myra.MonoGame to github
-      run: dotnet nuget push src\Myra\bin\MonoGame\Release\Myra.*.nupkg --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --api-key ${{secrets.GITHUB_TOKEN}} --skip-duplicate
+      run: dotnet nuget push src\Myra\bin\MonoGame\Release\JKMP.Myra.*.nupkg --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --api-key ${{secrets.GITHUB_TOKEN}} --skip-duplicate
     - name: Publish Myra.Stride to github
-      run: dotnet nuget push src\Myra\bin\Stride\Release\Myra.Stride.*.nupkg --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --api-key ${{secrets.GITHUB_TOKEN}} --skip-duplicate
+      run: dotnet nuget push src\Myra\bin\Stride\Release\JKMP.Myra.Stride.*.nupkg --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --api-key ${{secrets.GITHUB_TOKEN}} --skip-duplicate
     - name: Publish Myra.PlatformAgnostic to github
-      run: dotnet nuget push src\Myra\bin\PlatformAgnostic\Release\Myra.PlatformAgnostic.*.nupkg --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --api-key ${{secrets.GITHUB_TOKEN}} --skip-duplicate
+      run: dotnet nuget push src\Myra\bin\PlatformAgnostic\Release\JKMP.Myra.PlatformAgnostic.*.nupkg --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --api-key ${{secrets.GITHUB_TOKEN}} --skip-duplicate
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
