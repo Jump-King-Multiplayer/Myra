@@ -4,6 +4,7 @@
     <Product>Myra</Product>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/Jump-King-Multiplayer/Myra</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Jump-King-Multiplayer/Myra</RepositoryUrl>
     <RootNamespace>Myra</RootNamespace>
     <Description>UI Library for MonoGame, FNA and Stride</Description>
     <VersionPrefix>2.0.0</VersionPrefix>
