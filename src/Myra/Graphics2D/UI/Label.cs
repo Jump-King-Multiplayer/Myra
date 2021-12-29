@@ -156,6 +156,13 @@ namespace Myra.Graphics2D.UI
 			get; set;
 		}
 
+		[Category("Appearance")]
+		public bool SupportsCommands
+		{
+			get => _formattedText.SupportsCommands;
+			set => _formattedText.SupportsCommands = value;
+		}
+
 		internal Color? PressedTextColor
 		{
 			get; set;
