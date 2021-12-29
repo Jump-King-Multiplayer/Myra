@@ -7,7 +7,7 @@
     <RepositoryUrl>https://github.com/Jump-King-Multiplayer/Myra</RepositoryUrl>
     <RootNamespace>Myra</RootNamespace>
     <Description>UI Library for MonoGame, FNA and Stride</Description>
-    <VersionPrefix>2.0.0</VersionPrefix>
+    <VersionPrefix>2.0.1</VersionPrefix>
     <FontStashSharpVersion>1.0.3</FontStashSharpVersion>
     <LangVersion>8.0</LangVersion>
     <InfoLundinMathVersion>1.2.6</InfoLundinMathVersion>
