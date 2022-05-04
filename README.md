@@ -1,6 +1,6 @@
 ## Overview
-[![Build & Publish Release](https://github.com/Jump-King-Multiplayer/Myra/actions/workflows/build-and-publish-release.yml/badge.svg?branch=master)](https://github.com/Jump-King-Multiplayer/Myra/actions/workflows/build-and-publish-release.yml)
-[![Build & Publish Beta](https://github.com/Jump-King-Multiplayer/Myra/actions/workflows/build-and-publish-beta.yml/badge.svg)](https://github.com/Jump-King-Multiplayer/Myra/actions/workflows/build-and-publish-beta.yml)
+[![Build & Publish Release](https://github.com/Jump-King-Modding-Platform/Myra/actions/workflows/build-and-publish-release.yml/badge.svg?branch=master)](https://github.com/Jump-King-Modding-Platform/Myra/actions/workflows/build-and-publish-release.yml)
+[![Build & Publish Beta](https://github.com/Jump-King-Modding-Platform/Myra/actions/workflows/build-and-publish-beta.yml/badge.svg)](https://github.com/Jump-King-Modding-Platform/Myra/actions/workflows/build-and-publish-beta.yml)
 
 Myra is UI Library for [MonoGame](http://www.monogame.net/), [FNA](https://github.com/FNA-XNA/FNA) and [Stride](https://github.com/stride3d/stride).
 
@@ -16,10 +16,10 @@ Myra is UI Library for [MonoGame](http://www.monogame.net/), [FNA](https://githu
 * Fixed various bugs related to MML.
 
 ## Demo
-If you would like to see Myra in action, download the binary release(Myra.v.v.v.v.zip from the latest release at [Releases](https://github.com/Jump-King-Multiplayer/Myra/releases)), unpack it and run samples(should be runnable on Linux too through Mono).
+If you would like to see Myra in action, download the binary release(Myra.v.v.v.v.zip from the latest release at [Releases](https://github.com/Jump-King-Modding-Platform/Myra/releases)), unpack it and run samples(should be runnable on Linux too through Mono).
 
 ## Documentation
-[https://github.com/Jump-King-Multiplayer/Myra/wiki](https://github.com/Jump-King-Multiplayer/Myra/wiki)
+[https://github.com/Jump-King-Modding-Platform/Myra/wiki](https://github.com/Jump-King-Modding-Platform/Myra/wiki)
 
 ## Support
 Use following resources if you need help with Myra or have other questions:

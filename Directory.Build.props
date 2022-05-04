@@ -3,8 +3,8 @@
     <Authors>MyraTeam</Authors>
     <Product>Myra</Product>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/Jump-King-Multiplayer/Myra</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Jump-King-Multiplayer/Myra</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Jump-King-Modding-Platform/Myra</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Jump-King-Modding-Platform/Myra</RepositoryUrl>
     <RootNamespace>Myra</RootNamespace>
     <Description>UI Library for MonoGame, FNA and Stride. Note: this is a modified fork used by JKMP.</Description>
     <VersionPrefix>2.0.1</VersionPrefix>
